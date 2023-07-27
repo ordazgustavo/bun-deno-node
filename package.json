@@ -1,11 +1,19 @@
 {
-  "name": "bun-ts",
-  "module": "index.ts",
+  "name": "bun-deno-node",
+  "main": "index.js",
   "type": "module",
+  "scripts": {
+    "bench:index": "hyperfine \"node hello.js\" \"bun hello.js\" \"deno run --allow-all hello.js\" --warmup 3 --export-markdown hello.md",
+    "bench:hello": "hyperfine \"node index.js\" \"bun index.js\" \"deno run --allow-all index.js\" --warmup 3 --export-markdown index.md",
+    "bench": "bun bench:index; bun bench:hello"
+  },
   "dependencies": {
     "typescript": "^5.0.0"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "bun-types": "latest",
+    "eslint": "^8.45.0"
   }
 }
